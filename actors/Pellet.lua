@@ -14,13 +14,17 @@ function Pellet:placeRandom(type)
     cell:claim(self)
     if not type then
         type = "normal"
-        cell:setColour(self, C.colour.magenta)
         self.powerCooldown = self.powerCooldown - 1
         if self.powerCooldown <= 0 then
             type = "power"
-            cell:setColour(self, C.colour.lightgreen)
             self.powerCooldown = love.math.random(C.pellet.powerCooldownMin, C.pellet.powerCooldownMax)
         end
+    end
+
+    if type == "power" then
+        cell:setColour(self, C.colour.lightgreen)
+    else
+        cell:setColour(self, C.colour.magenta)
     end
     self.cells[cell] = type
     self.cellcount = self.cellcount + 1
