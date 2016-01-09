@@ -64,7 +64,8 @@ C = {
     },
     gigasnake = {
         length = 150,
-        size = 2
+        size = 2,
+        dropChance = 0.02
     },
     tetromino = {
         count = 5,
@@ -78,9 +79,9 @@ C = {
     },
     invader = {
         frameTicks = 10,
-        bulletTicks = 8,
+        bulletTicks = 13,
         bulletLength = 5,
-        bulletExplosionSize = 5
+        bulletExplosionSize = 2
     },
 
     -- Events

@@ -39,27 +39,32 @@ function InvaderBullet:move()
 end
 
 function InvaderBullet:explodeTick()
-    local oldCells = Game.board:getCellsInRange(self.x, self.y, self.exploded, false)
-    for k, v in pairs(oldCells:items()) do
-        v:setFilled(self, false)
-        v:release(self)
-    end
+    -- local oldCells = Game.board:getCellsInRange(self.x, self.y, self.exploded, false)
+    -- for k, v in pairs(oldCells:items()) do
+    --     v:setFilled(self, false)
+    --     v:release(self)
+    -- end
     self.exploded = self.exploded + 1
     if self.exploded > C.invader.bulletExplosionSize then
         Game.board:removeActor(self)
         return
     end
-    local newCells = Game.board:getCellsInRange(self.x, self.y, self.exploded, false)
+    local newCells = Game.board:getCellsInRange(self.x, self.y - 1, self.exploded, false)
     for k, v in pairs(newCells:items()) do
         v:destroy(self)
         v:claim(self)
         v:setFilled(self, true)
-        v:setColour(self, C.colour.grey)
+        v:setColour(self, C.colour.black)
     end
 end
 
 function InvaderBullet:explode()
     if self.exploded then return end
+    for y=1, C.invader.bulletLength do
+        local cell = Game.board:getCell(self.x, self.y - y)
+        cell:setFilled(self, false)
+        cell:release(self)
+    end
     self.exploded = -1
 end
 

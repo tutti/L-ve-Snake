@@ -39,7 +39,10 @@ function GigaSnake:move()
         v:setColour(self, C.colour.black)
     end
     for k, v in pairs(tailCells:items()) do
-        v:setFilled(self, false)
+        local dropVal = love.math.random()
+        if dropVal > C.gigasnake.dropChance then
+            v:setFilled(self, false)
+        end
         v:release(self)
     end
 
