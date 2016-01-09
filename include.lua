@@ -17,5 +17,6 @@ require("actors.Tetromino")
 require("actors.EvilSnake")
 require("actors.Wormhole")
 require("actors.Invader")
+require("actors.Turret")
 
 require("events.Bombs")

@@ -34,6 +34,7 @@ function Cell:claim(owner)
         self.owner = owner
         return true
     end
+    return false
 end
 
 function Cell:release(owner)

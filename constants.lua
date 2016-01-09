@@ -84,6 +84,9 @@ C = {
         bulletLength = 5,
         bulletExplosionSize = 2
     },
+    turret = {
+        fireTicks = 15
+    },
 
     -- Events
     bombs = {

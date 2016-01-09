@@ -47,8 +47,8 @@ end
 
 function Pellet:triggerPowerPellet(cell, actor)
     cell:release(self)
-    local effectNumber = love.math.random(1, 9)
-    --effectNumber = 9 -- FOR TESTING
+    local effectNumber = love.math.random(1, 10)
+    --effectNumber = 10 -- FOR TESTING
     --while effectNumber ~= 9 and effectNumber ~= 2 do effectNumber = love.math.random(1, 9) end
     if effectNumber == 1 then
         -- Release a bouncer where the power pellet was
@@ -89,5 +89,8 @@ function Pellet:triggerPowerPellet(cell, actor)
     end
     if effectNumber == 9 then
         Game.board:addActor(Invader:new())
+    end
+    if effectNumber == 10 then
+        Game.board:addActor(Turret:new())
     end
 end
