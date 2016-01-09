@@ -69,6 +69,14 @@ function Snake:move()
     end
 end
 
+function Snake:dropCells()
+    while self.cells:size() > self.length do
+        local tail = self.cells:pop()
+        tail:setFilled(self, true)
+        tail:release(self)
+    end
+end
+
 function Snake:hook_gameTick()
     -- Triggers the snake to move
     self:move()
@@ -90,7 +98,8 @@ function Snake:hook_cellDestroyed(cell)
 end
 
 function Snake:hook_pellet()
-    self.length = self.length + C.snake.growth
+    self.length = self.length + love.math.random(C.snake.minGrowth, C.snake.maxGrowth)
+    self:dropCells()
 end
 
 function Snake:hook_powerup(power)

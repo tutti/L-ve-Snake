@@ -46,7 +46,8 @@ C = {
 
     snake = {
         length = 20,
-        growth = 5
+        minGrowth = -3,
+        maxGrowth = 5
     },
     pellet = {
         minimum = 1, -- The game will always have this many pellets on the board
