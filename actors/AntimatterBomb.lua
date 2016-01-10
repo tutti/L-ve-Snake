@@ -53,8 +53,8 @@ function AntimatterBomb:hook_cleanup()
     end
 end
 
-function AntimatterBomb:hook_cellDestroyed(cell)
-    if cell == self.center then
+function AntimatterBomb:hook_cellDestroyed(cell, destroyer)
+    if cell == self.center and destroyer ~= self then
         self.countdown = C.antimatter.ticksPerStage + 1
     end
 end
