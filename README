@@ -1,0 +1,73 @@
+# For everyone
+This game isn't finished. This README file describes how the game works at the
+time of its writing. It will not be updated every time the game is.
+
+# For players
+## Controls
+The snake can be controlled using your arrow keys. The space bar pauses or
+unpauses the game. The game will start immediately when you run the program.
+If you die, restart the program to try again.
+
+## Pellets
+The magenta cells you see are pellets. Your goal is to pick these up for points
+(points are tracked, but currently not displayed). Sometimes, a pellet will be
+light green instead of magenta; this is called a power pellet, and picking it up
+will cause Something to happen in addition to giving you a point.
+
+## Power pellet effects
+### Invincibility
+This causes the snake to become invincible for a short while. In this state, the
+snake can pass through any obstacle that would normally kill it. You can tell
+that you're invincible because the snake's head will be yellow instead of blue.
+Beware - there is no warning when this is about to end.
+
+### Bombs
+Five "bombs" are placed on the field. These are small diamond-shaped blocks.
+
+### Bouncer
+The power pellet will start bouncing rather than disappearing (a new pellet
+still appears). The bouncer destroys any cell it hits. After a while, the
+bouncer will explode, taking out any cells in its blast radius. This is not
+dangerous to the snake.
+
+### Antimatter bomb
+This behaves exactly like real antimatter doesn't. It appears as a single green
+cell at first, then it goes orange and then red, before exploding. The explosion
+is two 3 wide bands, one horizontal and one vertical, both centered on the
+original cell, that destroy everything they hit.
+
+### Giga snake
+A giant snake appears from one of the sides. It will cross the entire screen.
+After a while the tail end of the body will follow suit, and the giga snake
+leaves the field. The giga snake may leave some droppings behind.
+
+### Evil snake
+A grey snake will appear on the field and randomly move around. If it eats a
+pellet, it will turn dark red and start dropping bombs behind it.
+
+### Tetrominoes
+Tetrominoes are geometric shapes consisting of 4 connected squares. In this game
+five tetrominoes will fall from the top of the play field, and stop when they
+hit a solid cell or the bottom of the play field.
+
+### Turret
+A turret will appear somewhere on the field and start firing in a random
+direction. The bullets consist of a single cell moving in the same direction
+until they hit something, then disappearing. The turret is a diamond shaped
+object with an orange cell in the middle; if the orange cell is destroyed, the
+turret stops firing.
+
+### Wormhole
+One cell on the board will turn orange, and another will turn light blue.
+Entering one will cause the snake to exit through the other. Some other actors
+are also capable of passing through a wormhole. If either end of the wormhole is
+destroyed, both ends will explode.
+
+### Invader
+An invader from space will fly across the top of the play field, firing shots at
+regular intervals. If these bullets hit something, they will explode and remain
+where they hit; however they will pass through the bottom of the play field
+harmlessly if they can get there.
+
+# For developers
+This section is currently unwritten. Many details are not finalised.

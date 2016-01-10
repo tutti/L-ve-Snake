@@ -88,9 +88,11 @@ function Pellet:triggerPowerPellet(cell, actor)
         Game.board:addActor(Wormhole:new())
     end
     if effectNumber == 9 then
+        -- Invaders
         Game.board:addActor(Invader:new())
     end
     if effectNumber == 10 then
+        -- Turret
         Game.board:addActor(Turret:new())
     end
 end
