@@ -140,8 +140,8 @@ end
 local time = 0
 function love.update(elapsed)
     time = time + elapsed
-    while time >= C.tick do
+    if time >= C.tick then
         Game:tick()
-        time = time - C.tick
+        time = 0
     end
 end

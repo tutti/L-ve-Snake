@@ -19,6 +19,7 @@ end
 
 function Button:draw()
     if not self.shown then return end
+    love.graphics.setColor(C.colour.white)
     love.graphics.draw(self.image, self.x, self.y)
 end
 
