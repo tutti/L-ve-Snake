@@ -1,7 +1,10 @@
 C = true -- Allows reference to C from functions within C
 C = {
     dpad = {
-        right = 100
+        margin = 50
+    },
+    gamebutton = {
+        margin = 50
     },
     tick = 0.05,
     board = {
@@ -12,8 +15,8 @@ C = {
         margin = 50
     },
     cell = {
-        width = 10,
-        height = 10
+        width = 20,
+        height = 20
     },
     colour = {
         white = {255, 255, 255},

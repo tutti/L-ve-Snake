@@ -2,7 +2,9 @@ require("constants")
 require("helpers")
 
 require("Player")
+require("Input")
 
+require("Button")
 require("Pattern")
 require("Board")
 require("Cell")
