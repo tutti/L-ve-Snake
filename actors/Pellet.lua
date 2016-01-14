@@ -48,7 +48,7 @@ end
 function Pellet:triggerPowerPellet(cell, actor)
     cell:release(self)
     local effectNumber = love.math.random(1, 10)
-    --effectNumber = 3 -- FOR TESTING
+    --effectNumber = 8 -- FOR TESTING
     --while effectNumber ~= 9 and effectNumber ~= 2 do effectNumber = love.math.random(1, 9) end
     if effectNumber == 1 then
         -- Release a bouncer where the power pellet was

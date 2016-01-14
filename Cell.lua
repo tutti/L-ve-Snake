@@ -14,8 +14,8 @@ function Cell:construct(x, y)
 end
 
 function Cell:draw()
-    local pixX = C.board.left + (self.x - 1) * C.cell.width
-    local pixY = C.board.top + (self.y - 1) * C.cell.height
+    local pixX = C.board.margin + (self.x - 1) * C.cell.width
+    local pixY = C.board.margin + (self.y - 1) * C.cell.height
     love.graphics.setColor(self.doPreserve or self.colour)
     love.graphics.rectangle("fill", pixX, pixY, C.cell.width, C.cell.height)
     if self.edgePreserve or self.edge then

@@ -1,11 +1,15 @@
 C = true -- Allows reference to C from functions within C
 C = {
+    dpad = {
+        right = 100
+    },
     tick = 0.05,
     board = {
         width = 50,
         height = 50,
-        left = 50,
-        top = 50
+        --left = 50,
+        --top = 50
+        margin = 50
     },
     cell = {
         width = 10,
