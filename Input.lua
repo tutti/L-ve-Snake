@@ -23,7 +23,7 @@ function love.touchpressed(id, x, y, pressure)
     Input.touches[id] = {x, y}
     for k, v in pairs(Input.buttons:items()) do
         if v:isHit(x, y) then
-            v:hook_press(x, y)
+            v:hook_press(x - v.x - v.width / 2, y - v.y - v.height / 2)
         end
     end
 end
@@ -32,7 +32,7 @@ function love.touchreleased(id, x, y, pressure)
     Input.touches[id] = nil
     for k, v in pairs(Input.buttons:items()) do
         if v:isHit(x, y) then
-            v:hook_release(x, y)
+            v:hook_release(x - v.x - v.width / 2, y - v.y - v.height / 2)
         end
     end
 end
@@ -44,9 +44,12 @@ function love.touchmoved(id, x, y, pressure)
         local hitThen = v:isHit(oldX, oldY)
         local hitNow = v:isHit(x, y)
         if hitThen and not hitNow then
-            v:hook_moveOff(x, y)
+            v:hook_moveOff()
         elseif hitNow and not hitThen then
-            v:hook_moveOn(x, y)
+            v:hook_moveOn()
+        end
+        if hitNow then
+            v:hook_move(x - v.x - v.width / 2, y - v.y - v.height / 2)
         end
     end
 end

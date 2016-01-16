@@ -2,7 +2,7 @@ love.math.setRandomSeed(love.timer.getTime())
 
 require("include")
 
-local boardWidth = love.graphics.getWidth() - 2*C.board.margin - C.dpad.margin - 3*Game.upbutton:size()
+local boardWidth = love.graphics.getWidth() - 2*C.board.margin - C.dpad.margin - Game.dpad:size()
 local boardHeight = love.graphics.getHeight() - 2*C.board.margin
 
 C.board.width = math.floor(boardWidth / C.cell.width)

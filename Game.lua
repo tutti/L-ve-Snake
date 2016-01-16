@@ -10,48 +10,33 @@ Game.gameIsOver = false
 local width, height = love.graphics.getWidth(), love.graphics.getHeight()
 local centerHeight = height / 2
 
-local upImage = love.graphics.newImage("resources/images/up.png")
-local arrowImageSize = upImage:getWidth()
+local dpadImage = love.graphics.newImage("resources/images/dpad.png")
+local dpadSize = dpadImage:getWidth()
 
-Game.upbutton = Button:new(upImage, width - 2*arrowImageSize - C.dpad.margin, centerHeight - (arrowImageSize * 1.5))
-Game.downbutton = Button:new(love.graphics.newImage("resources/images/down.png"), width - 2*arrowImageSize - C.dpad.margin, centerHeight + (arrowImageSize / 2))
-Game.rightbutton = Button:new(love.graphics.newImage("resources/images/right.png"), width - arrowImageSize - C.dpad.margin, centerHeight - (arrowImageSize / 2))
-Game.leftbutton = Button:new(love.graphics.newImage("resources/images/left.png"), width - 3*arrowImageSize - C.dpad.margin, centerHeight - (arrowImageSize / 2))
-
-Game.upbutton:setTolerance(25)
-Game.downbutton:setTolerance(25)
-Game.rightbutton:setTolerance(25)
-Game.leftbutton:setTolerance(25)
-
-Input:registerButton(Game.upbutton)
-Input:registerButton(Game.downbutton)
-Input:registerButton(Game.rightbutton)
-Input:registerButton(Game.leftbutton)
-
-function Game.upbutton:hook_press()
+Game.dpad = Button:new(dpadImage, width - dpadSize - C.dpad.margin, centerHeight - dpadSize / 2)
+Game.dpad:setTolerance(10)
+function Game.dpad:hook_press(x, y)
     if not Player.actor then return end
-    Player.actor:hook_playerInput("up")
+    if y > x then
+        if y > -x then
+            -- Down
+            Player.actor:hook_playerInput("down")
+        else
+            -- Left
+            Player.actor:hook_playerInput("left")
+        end
+    else
+        if y > -x then
+            -- Right
+            Player.actor:hook_playerInput("right")
+        else
+            -- Up
+            Player.actor:hook_playerInput("up")
+        end
+    end
 end
 
-function Game.downbutton:hook_press()
-    if not Player.actor then return end
-    Player.actor:hook_playerInput("down")
-end
-
-function Game.rightbutton:hook_press()
-    if not Player.actor then return end
-    Player.actor:hook_playerInput("right")
-end
-
-function Game.leftbutton:hook_press()
-    if not Player.actor then return end
-    Player.actor:hook_playerInput("left")
-end
-
-Game.upbutton.hook_moveOn = Game.upbutton.hook_press
-Game.downbutton.hook_moveOn = Game.downbutton.hook_press
-Game.rightbutton.hook_moveOn = Game.rightbutton.hook_press
-Game.leftbutton.hook_moveOn = Game.leftbutton.hook_press
+Game.dpad.hook_move = Game.dpad.hook_press
 
 local startImage = love.graphics.newImage("resources/images/start.png")
 local startImageWidth = startImage:getWidth()
@@ -62,10 +47,6 @@ Game.resumebutton = Button:new(love.graphics.newImage("resources/images/resume.p
 
 Game.pausebutton:hide()
 Game.resumebutton:hide()
-
-Input:registerButton(Game.startbutton)
-Input:registerButton(Game.pausebutton)
-Input:registerButton(Game.resumebutton)
 
 function Game.startbutton:hook_click()
     Game.startbutton:hide()
@@ -121,10 +102,13 @@ function Game:draw()
         self.board:draw()
     end
 
+    --[[
     self.upbutton:draw()
     self.downbutton:draw()
     self.leftbutton:draw()
     self.rightbutton:draw()
+    ]]
+    self.dpad:draw()
 
     self.startbutton:draw()
     self.pausebutton:draw()
